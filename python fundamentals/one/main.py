@@ -3,7 +3,7 @@ from calculate_area import Rectangle, Circle, Triangle
 def show_menu():
     while True:
         print(
-            '\nChoose Activity: \n1.Calculate Area\n2.Prime Number\n3.Simple Calculator\n4.Count Occurrence\n5.Convert Temperature\n6.Remove Duplicates\n7.Student Records\n8.Exit\n')
+            '\nChoose Activity: \n1.Calculate Area\n2.Prime Number\n3.Simple Calculator\n4.Count Occurrence\n5.Remove Duplicates\n6.Student Records\n7.Exit\n')
         response = int(input('Response >> '))
         match response:
             case 1:
@@ -15,12 +15,10 @@ def show_menu():
             case 4:
                 count_occurrence_menu()
             case 5:
-                convert_temperature_menu()
-            case 6:
                 remove_duplicates_menu()
-            case 7:
+            case 6:
                 student_records_menu()
-            case 8:
+            case 7:
                 break
             case _:
                 print("Invalid response")
@@ -67,16 +65,61 @@ def prime_number_menu():
         return 'Not a Prime number'
 
 def simple_calculator_menu():
-    pass
-def count_occurrence_menu():
-    pass
+    while True:
+        print('\n1.Multiplication: \n2.Division\n3.Subtraction\n4.Addition\n5.Exit\n')
+        num1 = int(input('Num1 >> '))
+        num2 = int(input('Num2 >> '))
+        operation = int(input('Operation (1-4) >> '))
 
-def convert_temperature_menu():
-    pass
+        match operation:
+            case 1:
+                print(f'Product: {num1 * num2}')
+            case 2:
+                print(f'Quotient: {num1 / num2}')
+            case 3:
+                print(f'Subtraction: {num1 - num2}')
+            case 4:
+                print(f'Addition: {num1 + num2}')
+            case 5:
+                break
+
+
+def count_occurrence_menu():
+    lists = ['burger', 'fries', 'napkins', 'burger','cheese','cheese']
+    [print(item, end=' ') for item in lists]
+    print('\nCounts: ',end='\n')
+    sets = set(lists)
+    for item in sets:
+        print(f"Count of {item} is {lists.count(item)}")
+
 def remove_duplicates_menu():
-    pass
+    lists = ['burger', 'fries', 'napkins', 'burger', 'cheese', 'cheese']
+    print('Before: ',end="\n")
+    [print(item, end=' ') for item in lists]
+    print('\nAfter: ',end='\n')
+    sets = set(lists)
+    [print(item, end=' ') for item in sets]
+
 def student_records_menu():
-    pass
+    students = {}
+    name = input('Student Name >> ')
+    age = int(input('Student Age >> '))
+    courses = []
+    while True:
+        course = input('Course (Exit 999)>> ')
+        if course == '999':
+            break
+        else:
+            courses.append(course)
+
+    students.update(
+        {'name':name,
+         'age' : age,
+         'courses': courses
+        }
+    )
+    for x , y in students.items():
+        print(f'{x} : {y}')
 
 show_menu()
 
